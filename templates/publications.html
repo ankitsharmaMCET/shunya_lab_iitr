@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Publications | Shunya Lab{% endblock %}
+
+{% block content %}
+
+<section class="section page-hero">
+  <div class="container">
+    <h1 class="page-title">Publications</h1>
+    <p class="page-subtitle">A collection of our research papers, articles, and conference proceedings.</p>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+
+    {% if publications %}
+
+      <div class="pub-filters mb-4">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-6">
+            <form method="get" class="d-flex gap-2">
+              <input type="text" name="q" value="{{ request.GET.q }}"
+                     class="form-control pub-input"
+                     placeholder="Search by title or author...">
+              <button type="submit" class="btn btn-brand">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="col-md-6">
+            <form method="get" class="d-flex gap-2 justify-content-md-end">
+              {% if request.GET.q %}
+                <input type="hidden" name="q" value="{{ request.GET.q }}">
+              {% endif %}
+
+              <select name="pub_type" class="form-select pub-select">
+                <option value="">Filter by Type</option>
+                <option value="journal" {% if request.GET.pub_type == "journal" %}selected{% endif %}>Journal Article</option>
+                <option value="conference" {% if request.GET.pub_type == "conference" %}selected{% endif %}>Conference Paper</option>
+                <option value="report" {% if request.GET.pub_type == "report" %}selected{% endif %}>Report</option>
+              </select>
+
+              <button type="submit" class="btn btn-outline-dark">Filter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        {% for pub in publications %}
+        <div class="col-lg-6">
+          <div class="pub-card h-100">
+            <h3 class="pub-title">{{ pub.title }}</h3>
+
+            <div class="pub-meta">
+              <div class="pub-meta-row">
+                <i class="fa-solid fa-user-group"></i>
+                <span><strong>Authors:</strong> {{ pub.authors }}</span>
+              </div>
+              <div class="pub-meta-row">
+                <i class="fa-regular fa-calendar"></i>
+                <span><strong>Year:</strong> {{ pub.year }}</span>
+              </div>
+              <div class="pub-meta-row">
+                <i class="fa-solid fa-bookmark"></i>
+                <span><strong>Source:</strong> {{ pub.journal_conference }}</span>
+              </div>
+            </div>
+
+            {% if pub.abstract %}
+            <div class="pub-abstract mt-3">
+              <button class="pub-abstract-toggle" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#abstract-{{ forloop.counter }}"
+                      aria-expanded="false"
+                      aria-controls="abstract-{{ forloop.counter }}">
+                Read Abstract <i class="fa-solid fa-chevron-down ms-1"></i>
+              </button>
+
+              <div class="collapse mt-2" id="abstract-{{ forloop.counter }}">
+                <div class="pub-abstract-body">{{ pub.abstract }}</div>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="pub-actions mt-auto d-flex align-items-center gap-2">
+              {% if pub.link %}
+              <a href="{{ pub.link }}" target="_blank" class="btn btn-outline-dark">
+                <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> View Publication
+              </a>
+              {% endif %}
+
+              <span class="pub-badge ms-auto">{{ pub.get_pub_type_display }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <div class="empty-state text-center">No publications found.</div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

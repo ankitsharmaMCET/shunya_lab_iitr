@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Join | Shunya Lab{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <h1 class="page-title">Join Our Team</h1>
+    <p class="page-subtitle">
+      We are always looking for passionate and talented researchers to contribute to our mission. Explore our current openings and find your place at Shunya Lab.
+    </p>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        {% if positions %}
+          <div class="opps-wrap">
+            {% for pos in positions %}
+              <div class="opp-item">
+
+                <!-- Header row -->
+                <div class="opp-head">
+                  <div class="opp-left">
+                    <h3 class="opp-title">{{ pos.title }}</h3>
+
+                    <div class="opp-meta">
+                      <span class="opp-badge">{{ pos.get_position_type_display }}</span>
+
+                      {% if pos.deadline %}
+                        <span class="opp-deadline">
+                          <i class="fa-regular fa-clock me-1"></i>
+                          Deadline: {{ pos.deadline|date:"F j, Y" }}
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                  <button class="btn btn-outline-dark opp-toggle"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#opportunity-{{ pos.id }}"
+                          aria-expanded="false"
+                          aria-controls="opportunity-{{ pos.id }}">
+                    View Details <i class="fa-solid fa-chevron-down ms-2 small"></i>
+                  </button>
+                </div>
+
+                <!-- Body -->
+                <div class="collapse" id="opportunity-{{ pos.id }}">
+                  <div class="opp-body">
+
+                    <div class="opp-block">
+                      <div class="opp-label">Description</div>
+                      <div class="opp-text">
+                        {{ pos.description|linebreaksbr }}
+                      </div>
+                    </div>
+
+                    <div class="opp-block">
+                      <div class="opp-label">Requirements</div>
+
+                      <div class="checklist">
+                        {% for requirement in pos.requirements.splitlines %}
+                          {% if requirement %}
+                          <div class="checkitem">
+                            <i class="fa-solid fa-circle-check"></i>
+                            {{ requirement }}
+                          </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                      {% if pos.application_link %}
+                        <a href="{{ pos.application_link }}" target="_blank" class="btn btn-brand btn-lg">
+                          Apply Now <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                      {% else %}
+                        <div class="empty-state">
+                          For application inquiries, please contact us directly.
+                        </div>
+                      {% endif %}
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            {% endfor %}
+          </div>
+
+        {% else %}
+          <div class="cta-box text-center">
+            <div style="font-size:2rem; opacity:.9; margin-bottom:.6rem;">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <h2 class="section-title mb-2" style="font-size:1.6rem;">No Current Opportunities Available</h2>
+            <p class="section-lead mb-0">
+              Please check back later or reach out to us for future collaborations.
+            </p>
+            <div class="mt-4">
+              <a href="{% url 'contact' %}" class="btn btn-outline-dark btn-lg">
+                Contact Us <i class="fa-solid fa-envelope ms-2"></i>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

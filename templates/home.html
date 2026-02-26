@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shunya Lab | IIT Roorkee{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('{% static 'images/hero.jpeg' %}');"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content" >
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7 text-white">
+        <h1 class="hero-title mb-3">Shunya Lab</h1>
+        <p class="hero-subtitle mb-4">
+          Pioneering Net Zero Solutions for India's Energy Future
+        </p>
+
+        <!-- Vision & Mission (must keep) -->
+        <div class="hero-panel">
+          <p class="mb-2">
+            <i class="fa-solid fa-eye me-2"></i>
+            <strong>Our Vision:</strong> Developing cutting edge workflows for whole Energy system optimization.
+          </p>
+
+          <p class="mb-2">
+            <i class="fa-solid fa-bullseye me-2"></i>
+            <strong>Our Mission is to:</strong>
+          </p>
+
+          <!-- IMPORTANT: no ps-3; CSS handles bullets -->
+          <ul class="mb-0">
+            <li class="mb-2">
+              Maximize supply chain efficiency through strategic management and continuous optimization.
+            </li>
+            <li>
+              Minimize the environmental impact of supply chain operations for a sustainable future.
+            </li>
+          </ul>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{% url 'research' %}" class="btn btn-brand btn-lg">
+            <i class="fa-solid fa-flask me-2"></i>Explore Our Research
+          </a>
+          <a href="{% url 'contact' %}" class="btn btn-glass btn-lg">
+            <i class="fa-solid fa-envelope me-2"></i>Collaborate With Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Optional right column (kept empty for balance) -->
+      <div class="col-lg-5 d-none d-lg-block"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- WELCOME / INTRO -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <div class="media-card">
+          <img src="{% static 'images/doms.png' %}" alt="Shunya Lab Environment" class="img-fluid">
+        </div>
+        <div class="mt-3">
+          <span class="pill-dark">
+            <i class="fa-solid fa-building-columns"></i>
+            Department of Management Studies • IIT Roorkee
+          </span>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="section-title mb-2">Welcome to Shunya Lab</h2>
+        <p class="section-lead">
+          An innovative research center dedicated to pioneering Net Zero solutions with a strong focus on India-centric research in energy and supply chain optimization.
+        </p>
+        <p class="mb-0">
+          Our commitment lies in developing cutting-edge workflows that address complex real-world challenges while driving significant environmental and economic impact. At Shunya Lab, we believe in the power of strategic management and continuous optimization to foster a sustainable future.
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <span class="pill-dark"><i class="fa-solid fa-leaf"></i>Sustainability</span>
+          <span class="pill-dark"><i class="fa-solid fa-globe-asia"></i>Impact</span>
+          <span class="pill-dark"><i class="fa-solid fa-handshake"></i>Collaboration</span>
+        </div>
+
+        <a href="{% url 'about' %}" class="btn btn-outline-dark mt-4">
+          Learn More About Our Lab <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH FOCUS -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title mb-2">Our Research Focus</h2>
+      <p class="section-lead mb-0">Key domains where we're driving innovation and creating sustainable impact</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-3 col-md-6">
+        <div class="feature feature--lift">
+          <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3 class="feature-title">Energy System Optimization</h3>
+          <p class="feature-text">
+            Developing advanced models for renewable integration, smart grid technologies, and efficient energy distribution systems.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="feature feature--lift">
+          <div class="feature-icon"><i class="fa-solid fa-recycle"></i></div>
+          <h3 class="feature-title">Sustainable Supply Chains</h3>
+          <p class="feature-text">
+            Creating circular economy models that minimize resource consumption and environmental impact.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="feature feature--lift">
+          <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3 class="feature-title">Carbon Markets &amp; Industry Transition</h3>
+          <p class="feature-text">
+            Analyzing carbon pricing mechanisms and developing policy frameworks to guide industries through a sustainable, low-carbon transition.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="feature feature--lift">
+          <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="feature-title">Net Zero Pathways</h3>
+          <p class="feature-text">
+            Developing India-specific roadmaps for achieving national sustainability targets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST UPDATES -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title mb-2">Latest Updates</h2>
+      <p class="section-lead mb-0">Stay informed about our research breakthroughs and activities</p>
+    </div>
+
+    <div class="row g-3">
+      {% if featured_news %}
+        {% for news in featured_news %}
+        <div class="col-lg-4 col-md-6">
+          <div class="news-card h-100">
+            <div class="news-date">
+              <i class="fa-regular fa-calendar"></i>
+              {{ news.date|date:"M d, Y" }}
+            </div>
+            <h3 class="news-title">{{ news.title }}</h3>
+            <p class="news-text">{{ news.summary }}</p>
+            <a href="{% url 'news_detail' slug=news.slug %}" class="link-cta">
+              Read Full Story <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <div class="empty-state">No updates available right now. Please check back soon.</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{% url 'news_list' %}" class="btn btn-outline-dark">
+        View All News &amp; Announcements <i class="fa-solid fa-newspaper ms-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+{% comment %} <section class="section section-soft">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="section-title mb-2">Stay Updated</h2>
+        <p class="section-lead mb-0">
+          Subscribe to our newsletter for the latest research updates, events, and opportunities.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <form class="d-flex flex-column flex-sm-row gap-2 newsletter-wrap">
+          <input type="email" class="form-control form-control-lg newsletter-input"
+                 placeholder="Your email address" aria-label="Email">
+          <button type="submit" class="btn btn-brand btn-lg">
+            Subscribe <i class="fa-solid fa-paper-plane ms-2"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-8">
+          <h2 class="section-title mb-1">Join Our Research Community</h2>
+          <p class="section-lead mb-0">
+            We're always looking for passionate researchers, students, and collaborators to join us in our mission to create sustainable energy solutions for India.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <div class="d-flex gap-3 flex-wrap justify-content-lg-end">
+            <a href="{% url 'opportunities' %}" class="btn btn-brand btn-lg">
+              <i class="fa-solid fa-user-plus me-2"></i>Join Our Team
+            </a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-dark btn-lg">
+              <i class="fa-solid fa-handshake me-2"></i>Collaborate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

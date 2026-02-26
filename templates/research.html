@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Research | Shunya Lab{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <h1 class="page-title">Our Research</h1>
+    <p class="page-subtitle">
+      Our research operates at the nexus of energy systems, supply chain management, and data-driven optimization to build a sustainable, net-zero future.
+    </p>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title mb-2">Our Focus Areas</h2>
+      <p class="section-lead mb-0">Key domains where we build models, methods, and real-world insights.</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-3">
+        <div class="feature feature--lift text-center">
+          <div class="feature-icon mx-auto"><i class="fa-solid fa-sitemap"></i></div>
+          <h3 class="feature-title">Energy Systems &amp; Grid Management</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            Developing optimization models for integrating renewable sources, ensuring grid stability, and managing energy storage.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="feature feature--lift text-center">
+          <div class="feature-icon mx-auto"><i class="fa-solid fa-truck"></i></div>
+          <h3 class="feature-title">Sustainable Supply Chains</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            Designing frameworks to decarbonize logistics, promote circular economy principles, and minimize environmental footprints.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="feature feature--lift text-center">
+          <div class="feature-icon mx-auto"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3 class="feature-title">Energy Policy &amp; Economics</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            Analyzing policy frameworks, carbon markets, and economic incentives to accelerate sustainable energy adoption.
+          </p>
+        </div>
+      </div>
+
+<div class="col-md-6 col-lg-3">
+  <div class="feature feature--lift text-center">
+    <div class="feature-icon mx-auto"><i class="fa-solid fa-diagram-project"></i></div>
+    <h3 class="feature-title">Energy Transition Modeling &amp; Planning</h3>
+    <p class="feature-text" style="-webkit-line-clamp: unset;">
+      Developing integrated assessment and optimization models to design low-carbon transition pathways, evaluate infrastructure investments, and support long-term energy planning.
+    </p>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ONGOING PROJECTS -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title mb-2">Ongoing Projects</h2>
+      <p class="section-lead mb-0">A snapshot of current work across policy, markets, and energy transitions.</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="feature feature--lift">
+          <h3 class="feature-title">Towards a Stable Indian Carbon Market: Design and Policy Insights</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            This project focuses on designing robust market mechanisms and policy frameworks to establish an efficient and stable carbon trading system in India.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="feature feature--lift">
+          <h3 class="feature-title">Multi-Country International Electricity Transition Potential</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            We are modeling the techno-economic potential and policy requirements for cross-border electricity trade to enhance regional grid stability and renewable energy uptake.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="feature feature--lift">
+          <h3 class="feature-title">Exploring Low Carbon Transportation Pathways for India</h3>
+          <p class="feature-text" style="-webkit-line-clamp: unset;">
+            This research analyzes pathways for decarbonizing India's transport sector, focusing on EV adoption, green hydrogen, and the required supply chain infrastructure.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <div class="cta-box">
+        <h3 class="section-title mb-1" style="font-size:1.5rem;">Want technical details?</h3>
+        <p class="section-lead mb-3">Explore our publications for in-depth findings and results.</p>
+        <a href="{% url 'publications' %}" class="btn btn-brand btn-lg">
+          View All Publications <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

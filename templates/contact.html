@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact | Shunya Lab{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <h1 class="page-title">Get In Touch</h1>
+    <p class="page-subtitle">
+      We welcome questions, collaboration proposals, and inquiries about our research.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT PANEL -->
+<section class="section">
+  <div class="container">
+    <div class="contact-shell">
+      <div class="row g-4">
+
+        <!-- FORM -->
+        <div class="col-lg-7">
+          <h2 class="section-title mb-2" style="font-size:1.55rem;">Send a Message</h2>
+          <p class="section-lead mb-4">Fill the form below and we’ll get back to you.</p>
+
+          {% if messages %}
+            <div class="alert alert-success">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <form method="post" action="">
+            {% csrf_token %}
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="{{ form.name.id_for_label }}" class="form-label">Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                  <div class="text-danger small mt-1">{{ form.name.errors.0 }}</div>
+                {% endif %}
+              </div>
+
+              <div class="col-md-6">
+                <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                  <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+                {% endif %}
+              </div>
+
+              <div class="col-12">
+                <label for="{{ form.subject.id_for_label }}" class="form-label">Subject</label>
+                {{ form.subject }}
+                {% if form.subject.errors %}
+                  <div class="text-danger small mt-1">{{ form.subject.errors.0 }}</div>
+                {% endif %}
+              </div>
+
+              <div class="col-12">
+                <label for="{{ form.message.id_for_label }}" class="form-label">Message</label>
+                {{ form.message }}
+                {% if form.message.errors %}
+                  <div class="text-danger small mt-1">{{ form.message.errors.0 }}</div>
+                {% endif %}
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn-brand btn-lg w-100 w-sm-auto">
+                  Send Message <i class="fa-solid fa-paper-plane ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="col-lg-5">
+          <div class="contact-card">
+            <h2 class="section-title mb-2" style="font-size:1.55rem;">Contact Information</h2>
+            <p class="section-lead mb-4">Reach us directly via the details below.</p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-ico"><i class="fa-solid fa-location-dot"></i></div>
+                <div>126, Department of Management Studies, IIT Roorkee</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-ico"><i class="fa-solid fa-envelope"></i></div>
+                <div>tarunsharma@ms.iitr.ac.in</div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-ico"><i class="fa-solid fa-phone"></i></div>
+                <div>01332-284976</div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <a href="mailto:tarunsharma@ms.iitr.ac.in" class="btn btn-outline-dark w-100">
+                Email Us <i class="fa-solid fa-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="map-shell">
+      <div class="ratio ratio-21x9">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.553922858882!2d77.89626931511183!3d29.8778199819325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb3e1ae7b2801%3A0x6b66838db56e4949!2sDepartment%20of%20Management%20Studies%2C%20IIT%20Roorkee!5e0!3m2!1sen!2sin!4v1662486714249!5m2!1sen!2sin"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

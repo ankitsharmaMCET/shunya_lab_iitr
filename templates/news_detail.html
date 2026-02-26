@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ news_item.title }} | Shunya Lab{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <h1 class="page-title">{{ news_item.title }}</h1>
+    <p class="page-subtitle">
+      <i class="fa-regular fa-calendar me-2"></i>{{ news_item.date|date:"F j, Y" }}
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb breadcrumb-dark">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'news_list' %}">News</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ news_item.title }}</li>
+          </ol>
+        </nav>
+
+        {% if news_item.featured_image %}
+          <div class="media-card mb-4">
+            <img src="{{ news_item.featured_image.url }}" alt="{{ news_item.title }}" class="img-fluid">
+          </div>
+        {% endif %}
+
+        <!-- Summary -->
+        {% if news_item.summary %}
+        <div class="cta-box mb-4">
+          <p class="mb-0" style="color: rgba(234,240,255,0.78); font-weight: 650; line-height:1.6;">
+            {{ news_item.summary }}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- Full story -->
+        <div class="event-desc-body">
+          {{ news_item.full_story_content|safe|linebreaks }}
+        </div>
+
+        <div class="mt-4 text-center">
+          <a href="{% url 'news_list' %}" class="btn btn-outline-dark btn-lg">
+            <i class="fa-solid fa-arrow-left me-2"></i>Back to All News
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
