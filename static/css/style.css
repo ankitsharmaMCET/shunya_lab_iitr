@@ -460,7 +460,7 @@ p, .section-lead, .news-text, .feature-text, .footer-text { color: var(--muted);
   color: rgba(234,240,255,0.72);
   font-weight: 600;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

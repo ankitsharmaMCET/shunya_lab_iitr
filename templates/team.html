@@ -18,7 +18,8 @@
 <section class="section">
   <div class="container">
     <div class="text-center mb-4">
-      <h2 class="section-title mb-2">Founder &amp; Lead Investigator</h2>
+      {% comment %} <h2 class="section-title mb-2">Founder &amp; Lead Investigator</h2> {% endcomment %}
+      <h2 class="section-title mb-2">Principal Investigator</h2>
       <p class="section-lead mb-0">Leadership guiding research vision and strategic direction.</p>
     </div>
 
@@ -100,12 +101,12 @@
           </div>
 
           <div class="team-card-body">
-            <p class="team-bio-sm">{{ member.bio|truncatechars:150 }}</p>
+            <p class="team-bio-sm">{{ member.bio|truncatechars:250 }}</p>
 
             {% if member.research_interests %}
             <div class="team-interests">
               <span class="team-interests-label">Interests</span>
-              <div class="team-interests-text">{{ member.research_interests|truncatewords:15 }}</div>
+              <div class="team-interests-text">{{ member.research_interests|truncatewords:45 }}</div>
             </div>
             {% endif %}
 
